@@ -12,8 +12,19 @@ e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 def button_click(number):
     e.insert(END, number)
 
+def button_add():
+    first_number=e.get()
+    global f_num
+    f_num=int(first_number)
+    e.delete(0, END)
+
 def button_clear():
     e.delete(0, END)
+
+def button_equal():
+    second_number=e.get()
+    e.delete(0, END)
+    e.insert(0, f_num+int(second_number))
 
 # Define buttons
 
@@ -26,9 +37,9 @@ button_6 = tk.Button(root, text="6", padx=40, pady=20, command=lambda: button_cl
 button_7 = tk.Button(root, text="7", padx=40, pady=20, command=lambda: button_click(7))
 button_8 = tk.Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8))
 button_9 = tk.Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
-button_0 = tk.Button(root, text="0", padx=40, pady=20, command=lambda: button_click())
-button_add = tk.Button(root, text="+", padx=39, pady=20, command=lambda: button_click())
-button_equal = tk.Button(root, text="=", padx=88, pady=20, command=lambda: button_click())
+button_0 = tk.Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
+button_add = tk.Button(root, text="+", padx=39, pady=20, command=button_add)
+button_equal = tk.Button(root, text="=", padx=88, pady=20, command=button_equal)
 button_clear = tk.Button(root, text="Clear", padx=78, pady=20, command=button_clear)
 
 # Put buttons on the screen
