@@ -68,8 +68,15 @@ def query():
 	# Query database
 	c.execute("SELECT *,oid FROM addresses")
 	records = c.fetchall()
-	print(records)
+	#print(records)
 
+	# Loop through results
+	print_records = ''
+	for record in records:
+		print_records += str(record[0]) + " " + str(record[1]) + '\n'
+
+	query_label = tk.Label(root,text=print_records)
+	query_label.grid(row=8,column=0,columnspan=2)
 
 	# Commit changes
 	conn.commit()
