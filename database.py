@@ -60,7 +60,22 @@ def submit():
 
 # Create query function
 def query():
-	return
+	# Create a database or connect to one
+	conn = sqlite3.connect('address_book.db')
+	# Create cursor
+	c = conn.cursor()
+
+	# Query database
+	c.execute("SELECT *,oid FROM addresses")
+	records = c.fetchall()
+	print(records)
+
+
+	# Commit changes
+	conn.commit()
+
+	# Close connection
+	conn.close()
 
 # Create text boxes
 f_name = tk.Entry(root,width=30)
